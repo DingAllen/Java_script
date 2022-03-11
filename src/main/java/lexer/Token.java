@@ -57,6 +57,41 @@ public class Token {
         return new Token(TokenType.VARIABLE, s);
     }
 
+    // 提取字符串
+    public static Token makeString(PeekIterator<Character> it) throws LexicalException {
+        String s = "";
+        int state = 0;
+
+        while (it.hasNext()) {
+            char c = it.next();
+            switch (state) {
+                case 0:
+                    if (c == '\'') {
+                        state = 1;
+                    } else {
+                        state = 2;
+                    }
+                    s += c;
+                    break;
+                case 1:
+                    if (c == '\'') {
+                        return new Token(TokenType.STRING, s + c);
+                    } else {
+                        s += c;
+                    }
+                    break;
+                case 2:
+                    if (c == '"') {
+                        return new Token(TokenType.STRING, s + c);
+                    } else {
+                        s += c;
+                    }
+                    break;
+            }
+        }
+        throw new LexicalException("Unexcepted error");
+    }
+
     @Override
     public String toString() {
         return "Token{" +
