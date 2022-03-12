@@ -43,7 +43,26 @@ public class testToken {
             assert token.getType() == TokenType.STRING;
             assert test.equals(token.getValue());
         }
+    }
 
-
+    @Test
+    public void test_make_operator() {
+        String[] tests = {
+                "+xxx",
+                "++gxs",
+                "/=s",
+                "&=",
+                "==12"
+        };
+        for (String test : tests) {
+            PeekIterator<Character> it = new PeekIterator<>(test.chars().mapToObj(x -> (char) x));
+            Token token = null;
+            try {
+                token = Token.makeOp(it);
+            } catch (LexicalException e) {
+                e.printStackTrace();
+            }
+            assert token.getType() == TokenType.OPERATOR;
+        }
     }
 }
