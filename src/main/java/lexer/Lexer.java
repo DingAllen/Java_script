@@ -11,7 +11,7 @@ public class Lexer {
     public ArrayList<Token> analyse(Stream source) throws LexicalException {
 
         ArrayList<Token> tokens = new ArrayList<>();
-        PeekIterator<Character> it = new PeekIterator<Character>(source, (char)0);
+        PeekIterator<Character> it = new PeekIterator<Character>(source, (char) 0);
 
         while (it.hasNext()) {
 
@@ -25,6 +25,29 @@ public class Lexer {
 
             if (c == ' ' || c == '\n') {
                 continue;
+            }
+
+            // 删除注释
+            if (c == '/') {
+                if (lookahead == '/') {
+                    while (it.hasNext() && (c = it.next()) != '\n') ;
+                    continue;
+                } else if (lookahead == '*') {
+                    it.next();
+                    boolean valid = false;
+                    while (it.hasNext()) {
+                        char p = it.next();
+                        if (p == '*' && it.peek() == '/') {
+                            it.next();
+                            valid = true;
+                            break;
+                        }
+                    }
+                    if (!valid) {
+                        throw new LexicalException("comments not match");
+                    }
+                    continue;
+                }
             }
 
             if (c == '{' || c == '}' || c == '(' || c == ')') {

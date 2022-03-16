@@ -44,4 +44,12 @@ public class testLexer {
 
         assertToken(tokens.get(0), "func", TokenType.KEYWORD);
     }
+
+    @Test
+    public void test_delete_comment() throws LexicalException {
+        String source = "// 123456.2321854896\n/*5s41d\n21653210.\n20202*/\n//111\na=1";
+        Lexer lexer = new Lexer();
+        ArrayList<Token> tokens = lexer.analyse(source.chars().mapToObj(x -> (char) x));
+        assert tokens.size() == 3;
+    }
 }
