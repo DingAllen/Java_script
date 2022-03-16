@@ -24,6 +24,14 @@ public class Token {
                 _type == TokenType.BOOLEAN;
     }
 
+    public boolean isNumber() {
+        return this._type == TokenType.INTEGER || this._type == TokenType.FLOAT;
+    }
+
+    public boolean isOperator() {
+        return this._type == TokenType.OPERATOR;
+    }
+
     public String getValue() {
         return _value;
     }
