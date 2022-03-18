@@ -1,4 +1,4 @@
-package parser;
+package parser.ast;
 
 public abstract class Factor extends AstNode {
     public Factor(AstNode parent, ASTNodeTypes type, String label) {

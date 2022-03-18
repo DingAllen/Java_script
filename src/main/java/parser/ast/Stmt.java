@@ -1,4 +1,4 @@
-package parser;
+package parser.ast;
 
 public abstract class Stmt extends AstNode{
 
