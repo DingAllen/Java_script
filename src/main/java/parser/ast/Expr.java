@@ -1,8 +1,8 @@
 package parser.ast;
 
-public class Expr extends AstNode {
+public class Expr extends ASTNode {
 
-    Expr(AstNode parent) {
+    public Expr(ASTNode parent) {
         super(parent);
     }
 }

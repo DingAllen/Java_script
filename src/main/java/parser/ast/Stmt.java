@@ -1,8 +1,8 @@
 package parser.ast;
 
-public abstract class Stmt extends AstNode{
+public abstract class Stmt extends ASTNode {
 
-    public Stmt(AstNode parent, ASTNodeTypes type, String label) {
+    public Stmt(ASTNode parent, ASTNodeTypes type, String label) {
         super(parent, type, label);
     }
 }

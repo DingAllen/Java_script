@@ -4,8 +4,8 @@ import lexer.Token;
 import lexer.TokenType;
 import parser.util.PeekTokenIterator;
 
-public abstract class Factor extends AstNode {
-    public Factor(AstNode parent, PeekTokenIterator it) {
+public abstract class Factor extends ASTNode {
+    public Factor(ASTNode parent, PeekTokenIterator it) {
         super(parent);
         Token token = it.next();
         TokenType type = token.getType();

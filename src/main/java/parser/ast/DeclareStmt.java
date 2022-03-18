@@ -1,7 +1,7 @@
 package parser.ast;
 
 public class DeclareStmt extends Stmt{
-    public DeclareStmt(AstNode parent) {
+    public DeclareStmt(ASTNode parent) {
         super(parent, ASTNodeTypes.DECLARE_STMT, "declare");
     }
 }
